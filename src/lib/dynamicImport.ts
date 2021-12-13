@@ -10,7 +10,9 @@ export const dynamicImport = async <T extends Module>(path: string): Promise<{ [
     const files = await fs.readdir(path);
     for (const file of files.filter(file => file.endsWith('.js'))) {
       const module = (await import(`${path}/${file}`)).module as T;
-      modules[module.name] = module;
+      if (module) {
+        modules[module.name] = module;
+      }
     }
   } catch (err) {
     console.error(err);

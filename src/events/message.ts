@@ -6,10 +6,11 @@ const prefix = constValues.commadPrefix;
 const eventName = 'message';
 
 const execute = (client: Client, args: ClientEvents[typeof eventName]) => {
-  if (!args[0].content.startsWith(prefix) || args[0].author.bot) {
+  const message = args[0];
+  if (!message.content.startsWith(prefix) || message.author.bot) {
     return;
   }
-  const commandArgs = args[0].content.slice(prefix.length).trim().split(/ +/);
+  const commandArgs = message.content.slice(prefix.length).trim().split(/ +/);
   const commandStr = commandArgs.shift()?.toLowerCase();
   if (!commandStr) {
     return;
@@ -25,7 +26,7 @@ const execute = (client: Client, args: ClientEvents[typeof eventName]) => {
     command.execute(client, args, commandArgs);
   } catch (error) {
     console.error(error);
-    args[0].reply('there was an error trying to execute that command!');
+    message.reply('エラー');
   }
 };
 

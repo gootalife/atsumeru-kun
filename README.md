@@ -14,28 +14,12 @@ Visual Studio Code を使用することを推奨します。
 npm start
 ```
 
-### start:dev
+### build
 
-ts-nodeを使って実行します。(コンパイル不要)
-
-```bash
-npm run start:dev
-```
-
-### compile
-
-コンパイルします。
+ビルドします。
 
 ```bash
-npm run compile
-```
-
-### compile:test
-
-コンパイルします。(ファイルを出力しない)
-
-```bash
-npm run compile:test
+npm run build
 ```
 
 ### lint
